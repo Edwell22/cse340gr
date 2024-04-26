@@ -4,3 +4,358 @@
 *:after {
   box-sizing: border-box;
 }
+
+#navigation a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+#wrapper {
+  max-width: 90%;
+  background-color: #FFFFFF;
+  color: #000000;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: rgb(245, 78, 27);
+}
+
+#top-header {
+  margin: 10px;
+  padding: 5px;
+}
+
+.siteName {
+  font-family: 'Bungee Spice', sans-serif;
+  font-size: 2rem;
+}
+
+.siteName a {
+  text-decoration: none;
+}
+
+#tools {
+  float: right;
+  margin-right: calc(5% - 25px);
+  margin-top: calc(4% - 10px);
+  font-size: .8rem;
+}
+
+#tools a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#tools, #navigation {
+  font-family: 'Nixie One', system-ui;
+}
+
+#navigation ul {
+  list-style: none;
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#navigation ul li {
+  color: white;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+h1, h2 {
+  font-family: 'Oswald', sans-serif;
+}
+
+li {
+  font-family: 'Quattrocento', serif;
+}
+
+.hero-banner {
+  margin: 15px;
+}
+
+.hero-banner h1 {
+  font-size: 2rem;
+}
+
+.container {
+  position: relative;
+}
+
+.hero-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-info {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 0;
+  left: 15px;
+  padding-left: 15px;
+  padding-right: 5px;
+}
+
+.hero-info h2 {
+  margin: 0;
+  padding: 0;
+  color: rgb(245, 78, 27);
+  text-shadow: 1px 1px 1px rgb(184, 150, 2); 
+  font-size: 1.15rem;
+}
+
+.action {
+  font-family: 'Oswald', sans-serif;
+  background-color: rgb(245, 78, 27);
+  text-shadow: 1px 1px 1px rgb(184, 150, 2); 
+  border-radius: 5px;
+  padding: 3px 5px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.hero-info ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-car-info li {
+  font-size: 1rem;
+}
+
+.review-header {
+  margin: 15px;
+  padding-top: 15px;
+}
+
+.review-list ul{
+  padding: 0;
+  margin: 0;
+}
+
+.review-list li {
+  font-size: 0.95rem;
+}
+
+.link-boxes {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.links {
+  margin: 10px;
+}
+
+.link-box {
+  background-color:rgba(219, 217, 217, 0.5);
+  height: 100px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
+}
+
+figure {
+  padding: 0;
+  margin: 0;
+}
+
+figcaption {
+  font-family: 'Quattrocento', serif;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+footer {
+  font-family: 'Nixie One', system-ui;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 640px) {
+  
+  body {
+    background-image: url('../images/site/small_check.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  
+  .siteName {
+    font-size: 3rem;
+  }
+  
+  #tools {
+    font-size: 1rem;
+  }
+  
+  #navigation ul li {
+    font-size: 1.15rem;
+  }
+  
+  .hero-banner h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-info {
+    left: 25px;
+  }
+  
+  .hero-info h2 { 
+    font-size: 1.75rem;
+  }
+  
+  .hero-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .hero-car-info li {
+    font-size: 1.2rem;
+  }
+
+  .action {
+    font-size: 1.25rem;
+  }
+  
+  .bottom-info {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  .reviews {
+    width: 315px;
+  }
+
+  .links {
+    width: 325px;
+    order: -1;
+  }
+
+  .review-header, .link-header {
+    font-size: 1.15rem;
+  }
+
+  .review-list ul {
+    padding: 0;
+  }
+
+  .review-list li {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .link-boxes {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  .links {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .link-box {
+    background-color:rgba(219, 217, 217, 0.5);
+    height: 75px;
+    width: 125px;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  figure {
+    padding: 0;
+    margin: 0;
+  }
+  
+  figcaption {
+    font-family: 'Quattrocento', serif;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+  @media only screen and (min-width: 1024px)  {
+
+    #wrapper {
+      max-width: 90%;
+    }
+    
+    .siteName {
+      font-size: 4rem;
+    }
+    
+    #tools {
+      font-size: 1.25rem;
+    }
+    
+    #navigation ul li {
+      font-size: 1.75rem;
+    }
+    
+    .hero-banner h1 {
+      font-size: 3.25rem;
+    }
+    
+    .hero-info {
+      left: 75px;
+    }
+    
+    .hero-info h2 { 
+      font-size: 2.25rem;
+    }
+    
+    .hero-car-info li {
+      font-size: 1.75rem;
+    }
+  
+    .action {
+      font-size: 2rem;
+    }
+    
+    .review-header, .link-header {
+      font-size: 1.75rem;
+    }
+  
+    .review-list ul {
+      padding: 0;
+    }
+  
+    .review-list li {
+      font-size: 1.75rem;
+      line-height: 3rem;
+    }
+    
+    figcaption {
+      font-size: 1.5rem;;
+    }
+
+    .links, .reviews {
+      width: 500px;
+      padding-left: 25px;
+      justify-content: space-around;
+    }
+  
+    .link-box {
+      height: 125px;
+      width: 175px;
+    }
+  }
