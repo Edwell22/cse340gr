@@ -49,7 +49,7 @@
   font-weight: 700;
 }
 
-#tools, #navigation {
+#tools, #navigation, .nav {
   font-family: 'Nixie One', system-ui;
 }
 
@@ -179,6 +179,50 @@ figcaption {
   cursor: pointer;
 }
 
+#contentHeader {
+  margin: 0 auto;
+  padding-left: 5px;
+}
+
+#inv-display {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-display img {
+  border-radius: 10px;
+}
+
+.grid-display hr {
+  width: 75%;
+  border: 2px solid #000000;
+  border-radius: 2px;
+}
+
+.grid-display {
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid rgb(245, 78, 27);
+  border-radius: 7px;
+}
+
+.namePrice {
+  line-height: 1rem;
+}
+
+.priceField {
+  font-weight: 700;
+  font-family: 'Quattrocento', serif;
+}
+
+.grid-display a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1rem;
+}
+
 footer {
   font-family: 'Nixie One', system-ui;
   font-weight: 700;
@@ -291,6 +335,20 @@ footer {
     text-decoration: underline;
     cursor: pointer;
   }
+
+  .grid-display a {
+    font-size: 1.5rem;  
+  }
+
+  .priceField {
+    font-size: 1.5rem;
+  }
+
+  .grid-display {
+    padding: 20px;
+    margin: 30px;
+  }
+
 }
 
   @media only screen and (min-width: 1024px)  {
@@ -358,4 +416,28 @@ footer {
       height: 125px;
       width: 175px;
     }
+
+    #inv-display {
+      display: flex;
+      justify-content: space-around;
+      flex-flow: row wrap;
+    }
+    
+    .grid-display {
+      padding: 20px;
+      margin: 10px;
+    }
+    
+    .namePrice {
+      line-height: 2rem;
+    }
+    
+    .grid-display a {
+      font-size: 2.5rem;
+    }
+
+    .priceField {
+      font-size: 2.5rem;
+    }
+    
   }
