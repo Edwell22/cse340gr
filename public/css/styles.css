@@ -203,7 +203,7 @@ figcaption {
 
 #errorHeader {
   font-size: 4rem;
-  margin: 20;
+  margin: 20px;
   padding-left: 25px;
 
 }
@@ -245,6 +245,35 @@ figcaption {
   text-decoration: none;
   color: #000000;
   font-size: 1rem;
+}
+
+#vehicle-info {
+  margin: 20px;
+}
+
+#vehicle {
+  margin-left: 20px;
+}
+
+#vehicle-info img {
+  width: 95%;
+  border-radius: 5px;
+}
+
+.vehicleInfo {
+  width: 95%;
+  border: 2px solid black;
+  border-radius: 2px;
+}
+
+.price {
+  font-weight: 700;
+  font-family: 'Quattrocento', serif;
+  font-size: 1.5rem;
+}
+
+.description, .vehicleColor, .vehicleMiles {
+  font-family: 'Quattrocento', serif;
 }
 
 footer {
@@ -463,5 +492,38 @@ footer {
     .priceField {
       font-size: 2.5rem;
     }
+
+    #vehicle-info {
+      display: flex;
+    }
     
+    #vehicle {
+      margin-left: 20px;
+    }
+    
+    #vehicle-info img {
+      width: 95%;
+      border-radius: 5px;
+    }
+    
+    .vehicleInfo {
+      width: 95%;
+      border: 2px solid black;
+      border-radius: 2px;
+    }
+    
+    .description, .vehicleColor, .vehicleMiles {
+      margin-left: 10px;
+    }
+
+    .vehicle-display {
+      padding: 10px;
+      margin: 10px;
+    }
+    
+    .price {
+      font-size: 2rem;
+      margin-left: 10px;
+    }
+
   }

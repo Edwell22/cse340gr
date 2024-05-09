@@ -58,6 +58,38 @@ Util.buildClassificationGrid = async function(data){
     return grid
 }
 
+/* **********************************
+ * Build the single vehicle inventory view HTML
+ * ********************************** */
+Util.buildVehicleInfo = async function(data) {
+    let grid
+    if(data.length > 0) {
+        grid = '<div id="vehicle-info">'
+        data.forEach(vehicle => {
+            grid += '<img src="' + vehicle.inv_image
+            +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model
+            +' on CSE Motors">'
+            grid += '<div class="vehicle-display">'
+            grid += '<span class="price"><strong>Price:</strong> $ '
+            + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
+            grid += '<hr class="vehicleInfo">'
+            grid += '<p class="description"><strong>Description:</strong> ' + vehicle.inv_description
+            grid += '</p>'
+            grid += '<span class="vehicleColor"><strong>Color:</strong> ' + vehicle.inv_color 
+            grid += '</span>'
+            grid += '<br>'
+            grid += '<span class="vehicleMiles"><strong>Mileage:</strong> '
+            + new Intl.NumberFormat('en-US').format(vehicle.inv_miles) + '</span>'
+            grid += '</div>'
+            
+        })
+        grid += '</div>'
+    } else {
+        grid += '<p class="notice">Sorry, no matcing vehicles could be found.</p>'
+    }
+    return grid
+}
+
 /* ****************************
  * Middleware For Handling Errors
  * Wrap other function in this for
