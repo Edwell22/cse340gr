@@ -79,6 +79,7 @@ li, #errorMessage {
 }
 
 #errorImage {
+  width: 50%;
   display: grid;
   margin-left: auto;
   margin-right: auto;
@@ -86,7 +87,7 @@ li, #errorMessage {
 
 #errorMessage {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .hero-banner {
@@ -202,9 +203,9 @@ figcaption {
 }
 
 #errorHeader {
-  font-size: 4rem;
-  margin: 20px;
-  padding-left: 25px;
+  font-size: 2rem;
+  margin: 7px;
+  padding-left: 7px;
 
 }
 
@@ -402,6 +403,17 @@ footer {
     margin: 30px;
   }
 
+  #errorMessage {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  #errorHeader {
+    font-size: 2rem;
+    margin: 10px;
+    padding-left: 7px;
+  
+  }
 }
 
   @media only screen and (min-width: 1024px)  {
@@ -524,6 +536,24 @@ footer {
     .price {
       font-size: 2rem;
       margin-left: 10px;
+    }
+
+    #errorImage {
+      display: grid;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    #errorMessage {
+      text-align: center;
+      font-size: 2rem;
+    }
+    
+    #errorHeader {
+      font-size: 3rem;
+      margin: 8px;
+      padding-left: 15px;
+    
     }
 
   }
