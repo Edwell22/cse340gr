@@ -8,6 +8,15 @@
 <!-- Message -->
 <%- messages() %>
 
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+
 <!-- Form Items -->
 <p class="inputRequirements">*All fields are required</p>
 <div id="registration">
