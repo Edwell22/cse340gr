@@ -32,8 +32,6 @@ app.use(session({
   saveUninitialized: true,
   name: 'sessionId',
 }))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // Express Messages Middleware
 app.use(require('connect-flash')())
@@ -41,6 +39,10 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+// Process Registration Middleware
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 /* ***********************
  * View Engine and Templates
@@ -52,7 +54,7 @@ app.set("layout", "./layouts/layout") //not at views root
 /* ***********************
  * Routes
  *************************/
-app.use(static)
+app.use(utilities.handleErrors(static))
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes

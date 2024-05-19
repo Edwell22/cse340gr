@@ -1,0 +1,18 @@
+<!-- Content Heading -->
+<% if (title) { %>
+    <h1 id="management"><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Message -->
+<%- messages() %>
+
+<!-- Links -->
+<div id="newClass">
+    <%- newClass %>
+</div>
+<div id="addCar">
+<%- addCar %>
+</div>
+

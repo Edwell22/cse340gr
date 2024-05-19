@@ -414,6 +414,89 @@ figcaption {
   margin-left: 15px;
 }
 
+.add-inventory, .add-classification {
+  width: 95%;
+  background-color:#000000;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.newInv {
+  color: white;
+  font-family: 'Quattrocento', serif;
+  line-height: 1.5rem;
+  padding: 10px;
+  margin: 5px;
+}
+
+.newInv legend {
+  font-size: 1.25rem;
+  text-decoration: underline;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+
+.newInv input {
+  width: 90%;
+  padding: 7px;
+}
+
+.newInvButton, .newClassButton {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  width: 50%;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.newInvClass {
+  font-family: 'Quattrocento', serif;
+  font-size: 1.25rem;
+  height: 25px;
+  overflow-y: scroll;
+}
+
+#newClass a, #addCar a {
+  text-decoration: none;
+  font-family: 'Quattrocento', serif;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+#newClass, #addCar {
+  text-align: center;
+  padding: 10px;
+  background-color:rgb(0, 0, 0);
+  width: 75%;
+  margin: 15px auto;
+  border-radius: 10px;
+  cursor: pointer;
+  
+}
+
+.newClass {
+  color: white;
+  font-family: 'Quattrocento', serif;
+  line-height: 1.5rem;
+  padding: 10px;
+  margin: 5px;
+}
+
+.newClass input {
+  width: 90%;
+  padding: 7px;
+}
+
+.newClass legend {
+  font-size: 1.25rem;
+  text-decoration: underline;
+  padding-top: 6px;
+  margin-top: 6px;
+}
+
 footer {
   font-family: 'Nixie One', system-ui;
   font-weight: 700;
@@ -572,6 +655,17 @@ footer {
   
   .inputRequirements {
     margin-left: 25px;
+  }
+
+  .add-inventory, .add-classification {
+    width: 75%;
+    background-color:#000000;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+  #newClass, #addCar {
+    width: 50%;   
   }
 
 }
@@ -744,6 +838,18 @@ footer {
     #registration-form {
       font-size: 1.5rem;
       
+    }
+
+    #newClass, #addCar {
+      width: 45%;   
+    }
+
+    .add-classification {
+      width: 50%;
+    }
+
+    .newClassButton {
+      width: 45%;
     }
 
   }
