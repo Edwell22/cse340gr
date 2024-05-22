@@ -1,0 +1,22 @@
+<!-- Content Heading -->
+<% if (title) { %>
+    <h1 id="login"><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<!-- Message -->
+<%- messages() %>
+
+<!-- Error Block for Server-Side Validation -->
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <% }) %>
+    </ul>
+<% } %>
+
+<!-- Main Content -->
+<!-- <p class="acctmgmtview">Welcome  </p> -->
+ <p class="activity">You're logged in</p>
