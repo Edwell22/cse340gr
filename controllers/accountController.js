@@ -12,6 +12,7 @@ async function buildLogin(req, res, next) {
     res.render("account/login", {
         title: "Login",
         nav,
+        errors: null,
     })
 }
 
@@ -82,10 +83,11 @@ async function registerAccount(req, res) {
 }
 
 /* *******************************
- * Account Controller
+ * Process Login Request
  * ******************************* */
 async function accountLogin(req, res){
     let nav = await utilities.getNav()
+    console.log("test")
     const { account_email, account_password } = req.body
     const accountData = await accountModel.getAccountByEmail(account_email)
     if (!accountData) {
@@ -103,11 +105,16 @@ async function accountLogin(req, res){
             {
                 delete accountData.account_password
                 const accessToken = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 3600 * 1000 })
+                if(process.env.NODE_ENV === 'development') {
                 res.cookie("jwt", accessToken, { httpOnly: true, maxAge: 3600 * 1000 })
+                } else {
+                    res.cookie("jwt", accessToken, {httpOnly: true, secure: true, maxAge: 3600 * 1000})
+                }
                 return res.redirect("/account/")
             }
 
     } catch (error) {
+        console.log(error)
         return new Error('Access Forbidden')
     }
 }
@@ -117,15 +124,15 @@ async function accountLogin(req, res){
  * **************************/
 async function buildAccountMgmtView(req, res, next) {
     let nav = await utilities.getNav()
-    // const { account_firstname, account_email } = req.body
-    // const userAccount = await accountModel.getAccountByEmail(account_firstname, account_email)
-    // console.log(userAccount)
+    const { account_firstname, account_email } = req.body
+    const userAccount = await accountModel.getAccountByEmail(account_firstname, account_email)
+    console.log(userAccount)
     // const userAccount = await accountModel.getAccountByEmail(loggedEmail)
 
     res.render("account/", {
         title: "Account Management",
         nav,
-        // account_firstname,
+        account_firstname,
         errors: null,
     })
 }

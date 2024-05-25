@@ -108,7 +108,8 @@ invCont.createNewClassification = async function (req, res, next) {
             title: "Management - New Inventory",
             nav,
             newClass,
-            addCar,     
+            addCar,
+            errors: null,     
         })
     } else {
         req.flash("notice", "Sorry, classifiction not added. Please try again.")
@@ -149,6 +150,7 @@ invCont.createNewInventory = async function (req, res, next) {
             nav,
             newClass,
             addCar,
+            errors: null,
         })
     } else  {
         req.flash("notice", "Sorry, inventory not added. Please try again.")
@@ -157,6 +159,19 @@ invCont.createNewInventory = async function (req, res, next) {
             nav,
             errors: null,
         })
+    }
+}
+
+/* ***************************
+ * Return Inventory by Classification As JSON
+ * *************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+    const classification_id = parseInt(req.params.classification_id)
+    const invData = await invModel.getInventoryByClassificationId(classification_id)
+    if(invData[0].inv_id) {
+        return res.json(invData)
+    } else {
+        next(new Error("No data returned"))
     }
 }
 

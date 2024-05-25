@@ -79,13 +79,8 @@ validate.loginRules = () => {
         .trim()
         .isEmail()
         .normalizeEmail() // refer to validator.js docs
-        .withMessage("A valid email is required.")
-        .custom(async (account_email) => {
-            const emailExists = await accountModel.checkExistingEmail(account_email)
-            if (emailExists){
-                throw new Error("Please log in using correct password.")
-            }
-        }),
+        .withMessage("A valid email is required."),
+
 
         // password is required and must be strong password
         body("account_password")
@@ -108,7 +103,9 @@ validate.checkLoginData = async (req, res, next) => {
     const { account_email } = req.body
     let errors = []
     errors = validationResult(req)
+    console.log(account_email)
     if (!errors.isEmpty()) {
+        console.log(errors)
         let nav = await utilities.getNav()
         res.render("account/login", {
             errors,

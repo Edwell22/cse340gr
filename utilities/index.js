@@ -95,35 +95,41 @@ Util.buildVehicleInfo = async function(data) {
 /* **************************************************
  * Constructs the management view add inventory drop-down menu
  * ************************************************** */
-// Util.getFormSelections = async function (req, res, next) {
-//     let data = await invModel.getClassifications()
-//     let list = '<label for="carClass" class="newInvClass">Choose the vehicle classification: </label>'
-//     list += '<select id="classification_id" name="classification_id" class="newInvClass">'
-//     list+= '<option class="newInvClass" value="Select one"></option>'
-//     data.rows.forEach((row) => {
-//         list +=
-//             `<option class="newInvClass" value="${row.classification_id}">${row.classification_name}</option>`})
-//     return list
-// }
-
-Util.getFormSelections = async function (classification_id = null) {
+Util.getFormSelections = async function (req, res, next) {
     let data = await invModel.getClassifications()
-    let classificationList =
-      '<select name="classification_id" id="classificationList" required>'
-    classificationList += "<option class='newInvClass' value=''>Choose a Classification</option>"
+    let list = '<label for="carClass" class="newInvClass">Choose the vehicle classification: </label>'
+    list += '<select id="classification_id" name="classification_id" class="newInvClass">'
+    list+= '<option class="newInvClass" value="Select one"></option>'
     data.rows.forEach((row) => {
-      classificationList += '<option class="newInvClass" value="' + row.classification_id + '"'
-      if (
-        classification_id != null &&
-        row.classification_id == classification_id
-      ) {
-        classificationList += " selected "
-      }
-      classificationList += ">" + row.classification_name + "</option>"
-    })
-    classificationList += "</select>"
-    return classificationList
-  }
+        list +=
+            `<option class="newInvClass" value="${row.classification_id}">${row.classification_name}</option>`})
+    return list
+}
+
+// Util.getFormSelections = async function (classification_id = null) {
+//     let data = await invModel.getClassifications()
+//     let classificationList =
+//       '<select name="classification_id" id="classificationList" required>'
+//     classificationList += "<option class='newInvClass' value=''>Choose a Classification</option>"
+//     data.rows.forEach((row) => {
+//       classificationList += '<option class="newInvClass" value="' + row.classification_id + '"'
+//       if (
+//         classification_id != null &&
+//         row.classification_id == classification_id
+//       ) {
+//         classificationList += " selected "
+//       }
+//       classificationList += ">" + row.classification_name + "</option>"
+//     })
+//     classificationList += "</select>"
+//     return classificationList
+//   }
+
+
+/* **********************************************
+ * Build the drop down list for classifications
+ * ********************************************** */
+
 
 /* **********************************************
  * Constructs the links for the new classification page

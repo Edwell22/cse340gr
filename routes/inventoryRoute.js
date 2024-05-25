@@ -36,4 +36,7 @@ invValid.newInvRules(),
 invValid.checkInvData,
 utilities.handleErrors(invController.createNewInventory))
 
+// Route to modify existing inventory data
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+
 module.exports = router

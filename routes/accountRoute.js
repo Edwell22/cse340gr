@@ -13,7 +13,7 @@ router.get("/register", utilities.handleErrors(accountController.buildRegister))
 
 // Route to register a new user
 router.post(
-    '/register', 
+    "/register", 
     regValidate.registrationRules(),
     regValidate.checkRegData,
     utilities.handleErrors(accountController.registerAccount))

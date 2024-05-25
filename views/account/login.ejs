@@ -8,6 +8,15 @@
 <!-- Message -->
 <%- messages() %>
 
+<!-- Error Block for Server-Side Validation -->
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <% }) %>
+    </ul>
+<% } %>
+
 <!-- Form Items -->
 <div class="login">
 <form id="login-form" action="/account/login" method="post">
@@ -21,5 +30,5 @@
     </div>
 </form>
 <hr class="login-break">
-<p class="registration">No account? <a href="/account/register">Sign-up</a></p>
+<p class="registration">No account?  <a href="/account/register"> Sign-up</a></p>
 </div>

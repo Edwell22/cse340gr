@@ -8,6 +8,15 @@
 <!-- Message -->
 <%- messages() %>
 
+<!-- Error Block for Server-Side Validation -->
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <% }) %>
+    </ul>
+<% } %>
+
 <!-- Form -->
 <div class="add-inventory">
     <form class="newInv" action="./add-inventory" method="post">
@@ -32,8 +41,16 @@
         <input type="text" id="inv_color" name="inv_color" required value="<%= locals.inv_color %>"><br>
         <h2 class="carClass">Vehicle Classification:</h2>
         <%- carClass %>
+
         <div class="button">
           <input type="submit" class="newInvButton" value="Create New Inventory"> 
         </div>
     </form>
+
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        handleClassificationSelect();
+    })
+    </script>
