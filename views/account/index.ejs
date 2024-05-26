@@ -18,5 +18,14 @@
 <% } %>
 
 <!-- Main Content -->
- <!-- <p class="acctmgmtview">Welcome  </p> -->
+<% if (user) { %>
+<h2>Welcome <%= user.account_firstname %></h2>
+<a href="/accounts/update/<%= user.account_id%>">Update Account Information</a>
+
+<% if (user.account_type === 'Employee' || user.account_type === 'Admin') { %>
+<h3>Inventory Management</h3>
+<p><a href="/inventory">Manage Inventory</a></p>
+<% } %>
+<% } else { %>
  <p class="activity">You're logged in</p>
+ <% } %>

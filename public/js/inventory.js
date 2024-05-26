@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOMContentLoaded event fired');
@@ -73,3 +73,4 @@ function buildInventoryList(data) {
     console.log("inventoryDisplay element not found");
   }
 }
+

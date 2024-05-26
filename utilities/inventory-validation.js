@@ -174,4 +174,47 @@ valid.checkInvData = async (req, res, next) => {
     next()
 }
 
+/* ******************************
+ * Check inventory data and 
+   Errors will be returned to the edit view
+ * ******************************/
+valid.checkUpdateData = async (req, res, next) => {
+    const { inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id, inv_id } = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        let carClass = await utilities.getFormSelections()
+
+        res.render("./inventory/edit-inventory", {
+            errors,
+            title: "Edit Inventory",
+            nav,
+            inv_make, 
+            inv_model, 
+            inv_year, 
+            inv_description, 
+            inv_image,
+            inv_thumbnail,
+            inv_price, 
+            inv_miles, 
+            inv_color, 
+            classification_id,
+            carClass,
+            inv_id,
+            handleClassificationSelect,
+        })
+        return
+    } else {
+        valid.validateData = async (req, res, next) => {
+            const errors = validationResult(req)
+            if(!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array() })
+            }
+        }
+
+    }
+    next()
+}
+
 module.exports = valid

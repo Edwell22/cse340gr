@@ -414,14 +414,14 @@ figcaption {
   margin-left: 15px;
 }
 
-.add-inventory, .add-classification {
+.add-inventory, .add-classification, .edit-inventory {
   width: 95%;
   background-color:#000000;
   margin: 0 auto;
   border-radius: 5px;
 }
 
-.newInv {
+.newInv, .editInv {
   color: white;
   font-family: 'Quattrocento', serif;
   line-height: 1.5rem;
@@ -429,19 +429,19 @@ figcaption {
   margin: 5px;
 }
 
-.newInv legend {
+.newInv legend, .editInv legend {
   font-size: 1.25rem;
   text-decoration: underline;
   padding-top: 6px;
   margin-top: 6px;
 }
 
-.newInv input {
+.newInv input, .editInv input {
   width: 90%;
   padding: 7px;
 }
 
-.newInvButton, .newClassButton {
+.newInvButton, .newClassButton, .editInvButton {
   font-family: 'Oswald', sans-serif;
   letter-spacing: 2px;
   font-weight: 700;

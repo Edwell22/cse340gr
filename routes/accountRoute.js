@@ -33,4 +33,17 @@ router.get(
     utilities.handleErrors(accountController.buildAccountMgmtView)
 )
 
+// Route for getting the account update form
+router.get("/accounts/update/:account_id", utilities.handleErrors(accountController.getUpdateAccountForm))
+
+// Route for processing the account update form
+router.post(
+    "/accounts/update/", 
+    regValidate.registrationRules(),
+    regValidate.checkRegData,
+    utilities.handleErrors(accountController.updateAccount))
+
+// Route for logout
+router.get("/logout",utilities.handleErrors(accountController.logoutToken))
+
 module.exports = router

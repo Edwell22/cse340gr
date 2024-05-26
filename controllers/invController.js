@@ -175,4 +175,128 @@ invCont.getInventoryJSON = async (req, res, next) => {
     }
 }
 
+/* *******************************
+ * Edit existing inventory data view
+ * ******************************* */
+invCont.editInventoryData = async function (req, res, next) {
+    const inv_id = parseInt(req.params.inv_id)
+    let nav = await utilities.getNav()
+    const invData = await invModel.getInventoryByInventoryId(inv_id)
+    const classificationSelect = await utilities.getFormSelections(invData.classification_id)
+    const invName = `${invData.inv_make} ${invData.inv_model}`
+    res.render("./inventory/edit-inventory", {
+      title: "Edit " + invName,
+      nav,
+      errors: null,
+      inv_id: invData.inv_id,
+      inv_make: invData.inv_make,
+      inv_model: invData.inv_model,
+      inv_year: invData.inv_year,
+      inv_description: invData.inv_description,
+      inv_image: invData.inv_image,
+      inv_thumbnail: invData.inv_thumbnail,
+      inv_price: invData.inv_price,
+      inv_miles: invData.inv_miles,
+      inv_color: invData.inv_color,
+      classification_id: invData.classification_id,
+      carClass: classificationSelect
+      
+    })
+  }
+
+ /* ****************************
+ * Update vehicle inventory 
+ * ****************************/
+invCont.updateInventory = async function (req, res, next) {
+    let nav = await utilities.getNav()
+
+    const {inv_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id} = req.body
+
+    console.log(req.body)
+    
+    const updateResult = await invModel.updateInventory(
+        inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
+    )
+
+    console.log(updateResult)
+
+    if (updateResult) {
+        const itemName = updateResult.inv_year + " " + updateResult.inv_make + " " + updateResult.inv_model
+        req.flash(
+            "notice",
+            `The ${itemName} was successfully updated.`)
+            res.redirect("/inv/")
+    } else {
+        const classificationSelect = await utilities.buildClassificationGrid(classification_id)
+        const itemName = `${inv_year} ${inv_make} ${inv_model}`
+        req.flash("notice", "Sorry the edit failed.")
+        res.status(501).render("inventory/edit-inventory", {
+        title: "Edit" + itemName,
+        nav,
+        carClass: classificationSelect,
+        errors: null,
+        inv_id, 
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_miles,
+        inv_color,
+        classification_id
+        })    
+    }
+}
+
+/* *******************************
+ * Delete existing inventory data view
+ * ******************************* */
+invCont.deleteInventoryData = async function (req, res, next) {
+    const inv_id = parseInt(req.params.inv_id)
+    let nav = await utilities.getNav()
+    const invData = await invModel.getInventoryByInventoryId(inv_id)
+    const classificationSelect = await utilities.getFormSelections(invData.classification_id)
+    const invName = `${invData.inv_make} ${invData.inv_model}`
+    res.render("./inventory/delete", {
+      title: "Delete " + invName,
+      nav,
+      errors: null,
+      inv_id: invData.inv_id,
+      inv_make: invData.inv_make,
+      inv_model: invData.inv_model,
+      inv_price: invData.inv_price      
+    })
+  }
+
+/* ****************************
+ * Delete vehicle inventory 
+ * ****************************/
+invCont.deleteInventory = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    const inv_id = parseInt(req.params.inv_id)  
+    const deleteResult = await invModel.deleteInventory(inv_id)
+
+    if (deleteResult) {
+        const itemName = deleteResult.inv_make + " " + deleteResult.inv_model
+        req.flash(
+            "notice",
+            `The ${itemName} was successfully updated.`)
+            res.redirect("/inv/")
+    } else {
+        const itemName = `${inv_make} ${inv_model}`
+        req.flash("notice", "Sorry the delete failed.")
+        res.status(501).render("inventory/delete", {
+        title: "Edit" + itemName,
+        nav,
+        errors: null,
+        inv_id, 
+        inv_make,
+        inv_model,
+        inv_price
+        })    
+    }
+}
+  
 module.exports = invCont

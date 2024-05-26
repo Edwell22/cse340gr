@@ -137,4 +137,22 @@ async function buildAccountMgmtView(req, res, next) {
     })
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountMgmtView }
+// /* ******************************
+//  * Account Management View - Credentials
+//  * ****************************** */
+// async function getAccountView(req, res, next) {
+//     const user = await accountModel.getAccountByEmail(account_firstname, account_email)
+//     res.render('account', { user, title: 'Account Management '})
+// } 
+
+
+/* ***********************************
+ * Logout Request
+ * *********************************** */
+async function logoutToken(req, res) {
+    res.clearCookie("jwt")
+    res.redirect("/")
+}
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildAccountMgmtView, logoutToken }

@@ -39,4 +39,23 @@ utilities.handleErrors(invController.createNewInventory))
 // Route to modify existing inventory data
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
 
+// Route to edit inventory data
+router.get("/edit/:inv_id", utilities.handleErrors(invController.editInventoryData))
+
+// Route to process updating the inventory
+router.post(
+"/update/",
+invValid.newInvRules(),
+invValid.checkUpdateData,
+utilities.handleErrors(invController.updateInventory))
+
+// Route to delete inventory data
+router.get("/delete/:inv_id", utilities.handleErrors(invController.deleteInventoryData))
+
+// Route to process the delete command
+router.post(
+    "/delete/",
+    utilities.handleErrors(invController.deleteInventory))
+
+
 module.exports = router
