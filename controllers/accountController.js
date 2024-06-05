@@ -90,6 +90,7 @@ async function accountLogin(req, res){
     console.log("test")
     const { account_email, account_password } = req.body
     const accountData = await accountModel.getAccountByEmail(account_email)
+    console.log(accountData)
     if (!accountData) {
         req.flash("notice", "Please check your credentials and try again.")
         res.status(400).render("account/login", {
@@ -124,26 +125,26 @@ async function accountLogin(req, res){
  * **************************/
 async function buildAccountMgmtView(req, res, next) {
     let nav = await utilities.getNav()
-    const { account_firstname, account_email } = req.body
-    const userAccount = await accountModel.getAccountByEmail(account_firstname, account_email)
-    console.log(userAccount)
-    // const userAccount = await accountModel.getAccountByEmail(loggedEmail)
+    
 
-    res.render("account/", {
-        title: "Account Management",
-        nav,
-        account_firstname,
-        errors: null,
-    })
+    const userAccount = jwt.verify(req.cookies.jwt, process.env.ACCESS_TOKEN_SECRET)
+
+    if (userAccount) {
+        res.status(201).render("account/", {
+            title: "Account Management",
+            nav,
+            errors: null,
+            userAccount,
+        })
+    } else {
+        req.flash("notice", "Sorry, the login failed.")
+        res.status(501).render("account/login", {
+            title: "Login",
+            nav,
+            errors: null,
+        })
+    }
 }
-
-// /* ******************************
-//  * Account Management View - Credentials
-//  * ****************************** */
-// async function getAccountView(req, res, next) {
-//     const user = await accountModel.getAccountByEmail(account_firstname, account_email)
-//     res.render('account', { user, title: 'Account Management '})
-// } 
 
 
 /* ***********************************

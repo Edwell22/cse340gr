@@ -182,24 +182,17 @@ invCont.editInventoryData = async function (req, res, next) {
     const inv_id = parseInt(req.params.inv_id)
     let nav = await utilities.getNav()
     const invData = await invModel.getInventoryByInventoryId(inv_id)
+    console.log(invData)
     const classificationSelect = await utilities.getFormSelections(invData.classification_id)
     const invName = `${invData.inv_make} ${invData.inv_model}`
+
     res.render("./inventory/edit-inventory", {
       title: "Edit " + invName,
       nav,
       errors: null,
-      inv_id: invData.inv_id,
-      inv_make: invData.inv_make,
-      inv_model: invData.inv_model,
-      inv_year: invData.inv_year,
-      inv_description: invData.inv_description,
-      inv_image: invData.inv_image,
-      inv_thumbnail: invData.inv_thumbnail,
-      inv_price: invData.inv_price,
-      inv_miles: invData.inv_miles,
-      inv_color: invData.inv_color,
-      classification_id: invData.classification_id,
-      carClass: classificationSelect
+      invData,
+      carClass: classificationSelect,
+
       
     })
   }
@@ -210,12 +203,12 @@ invCont.editInventoryData = async function (req, res, next) {
 invCont.updateInventory = async function (req, res, next) {
     let nav = await utilities.getNav()
 
-    const {inv_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id} = req.body
+    const {inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, classification_id, inv_id} = req.body
 
     console.log(req.body)
     
     const updateResult = await invModel.updateInventory(
-        inv_id, inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id
+        inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id, inv_id
     )
 
     console.log(updateResult)
@@ -227,7 +220,8 @@ invCont.updateInventory = async function (req, res, next) {
             `The ${itemName} was successfully updated.`)
             res.redirect("/inv/")
     } else {
-        const classificationSelect = await utilities.buildClassificationGrid(classification_id)
+        const classificationSelect = await utilities.getFormSelections(classification_id)
+        console.log(classificationSelect)
         const itemName = `${inv_year} ${inv_make} ${inv_model}`
         req.flash("notice", "Sorry the edit failed.")
         res.status(501).render("inventory/edit-inventory", {

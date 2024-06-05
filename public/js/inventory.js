@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('DOMContentLoaded event fired');
@@ -53,16 +53,16 @@ function buildInventoryList(data) {
     // Clear the existing content
     inventoryDisplay.innerHTML = '';
 
-    let dataTable = '<thead>';
-    dataTable += '<tr><th>Vehicle Name</th><td>&nbsp;</td><td>&nbsp;</td></tr>';
+    let dataTable = '<thead class="tablehead">';
+    dataTable += '<tr class="tablerow"><th>Vehicle Name</th><td>&nbsp;</td><td>&nbsp;</td></tr>';
     dataTable += '</thead>';
     dataTable += '<tbody>';
 
     data.forEach(function(element) {
       console.log(element.inv_id + ", " + element.inv_model);
-      dataTable += `<tr><td>${element.inv_make} ${element.inv_model}</td>`;
-      dataTable += `<td><a href='/inv/edit/${element.inv_id}' title='Click to update'>Modify</a></td>`;
-      dataTable += `<td><a href='/inv/delete/${element.inv_id}' title='Click to delete'>Delete</a></td></tr>`;
+      dataTable += `<tr class="tablerow"><td>${element.inv_make} ${element.inv_model}</td>`;
+      dataTable += `<td class="tabledata"><a href='/inv/edit/${element.inv_id}' title='Click to update'>Modify</a></td>`;
+      dataTable += `<td class="tabledata"><a href='/inv/delete/${element.inv_id}' title='Click to delete'>Delete</a></td></tr>`;
     });
 
     dataTable += '</tbody>';

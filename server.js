@@ -49,9 +49,6 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 app.use(cookieParser())
 app.use(utilities.checkJWTToken)
 
-// //Check authentication validity
-// app.use(authMiddleware)
-
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -90,7 +87,7 @@ app.use(async (err, req, res, next) => {
     title: err.status || 'Server Error',
     imageHtml,
     message,
-    nav
+    nav,
   })
 })
 
